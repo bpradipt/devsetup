@@ -20,13 +20,17 @@ Misc setup for my dev environment
 ```
 
 - Install [vim plugin manager](https://github.com/junegunn/vim-plug)
-
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-- Copy vimrc, tmux.conf, zshrc under $HOME/.<file>
+- Install [tmux plugin manager](https://github.com/tmux-plugins/tpm)
+```
+ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+- Copy <file> (vimrc, tmux.conf, zshrc) under $HOME/.<file>
 
 
 
