@@ -14,6 +14,7 @@ Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/NERDTree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 """"""""""""""""""""""
@@ -125,9 +126,17 @@ imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 
 " NERDTree
 map <C-z> :NERDTreeToggle<CR> " Toggle side window with `CTRL+z`.
-" Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+" Start NERDTree. If a file is specified, move the cursor to its window.
+" autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+" Start NERDTree when Vim is started without file arguments.
+" autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" Start NERDTree when Vim starts with a directory argument.
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeShowHidden=1 " Show hidden files
