@@ -32,6 +32,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 - Copy <file> (vimrc, tmux.conf, zshrc) under $HOME/.<file>
 
+- Install plugins
 
-
+Open `vim` and execute `:PlugInstall` to install the plugins.
+Open `tmux` and press `prefix` + `I` to install the plugins.
 
