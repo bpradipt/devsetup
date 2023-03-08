@@ -191,3 +191,7 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
+
+" highlight trailing whitespace
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+$/
